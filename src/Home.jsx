@@ -3,7 +3,6 @@ import VisionSection from "./components/VisionSection";
 import MineralsSection from "./components/MineralsSection";
 import MinesSection from "./components/MinesSection";
 import PartnersSection from "./components/PartnersSection";
-import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import Slider from "./components/Slider";
 import MissionSection from "./components/MissionSection";
@@ -18,7 +17,7 @@ const Home = () => {
       <MineralsSection />
       <MinesSection />
       <PartnersSection />
-      <ContactSection />
+
       <Footer />
     </div>
   );
