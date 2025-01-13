@@ -93,6 +93,13 @@ const Gallery = () => {
       title: "Team",
       description: "24/7 mining operations in progress",
     },
+    {
+      id: 12,
+      src: "slider10.jpeg",
+      category: "team",
+      title: "Team",
+      description: "24/7 mining operations in progress",
+    },
   ];
 
   const filteredImages =
