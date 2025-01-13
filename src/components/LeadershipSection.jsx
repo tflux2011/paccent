@@ -31,24 +31,19 @@ const LeadershipSection = () => {
       imageSrc: "gm.jpeg",
     },
     {
-      name: "Adewale Afolabi",
-      position: "Mining Consultant",
-      imageSrc: "/api/placeholder/400/400",
-    },
-    {
       name: "Dr. Bunmi Folayinka",
       position: "International Marketing Representative",
-      imageSrc: "/api/placeholder/400/400",
+      imageSrc: "avatar-1.svg",
     },
     {
       name: "Fatimah Oriola",
       position: "Director (Media)",
-      imageSrc: "/api/placeholder/400/400",
+      imageSrc: "fatimah.jpeg",
     },
     {
       name: "Barrister Tamara Preye Tabai",
       position: "Company Secretary",
-      imageSrc: "/api/placeholder/400/400",
+      imageSrc: "Tamara.jpeg",
     },
     {
       name: "Lt. Victor O. Agunbiade",

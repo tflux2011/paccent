@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, Send, MessageSquare } from "lucide-react";
+import PropTypes from "prop-types";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -9,21 +12,74 @@ const ContactPage = () => {
     subject: "",
     message: "",
   });
-
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setLoading(true);
+    setError("");
+
+    try {
+      // Replace these values with your EmailJS credentials
+      const emailjsConfig = {
+        serviceId: import.meta.env.VITE_SERVICE_ID,
+        templateId: import.meta.env.VITE_TEMPLATE_ID,
+        userId: import.meta.env.VITE_USER_ID,
+      };
+
+      // Format the email data
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+      };
+
+      // Send the email using the EmailJS API
+      const response = await fetch(
+        "https://api.emailjs.com/api/v1.0/email/send",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            service_id: emailjsConfig.serviceId,
+            template_id: emailjsConfig.templateId,
+            user_id: emailjsConfig.userId,
+            template_params: templateParams,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        throw new Error("Failed to send email");
+      }
+    } catch (error) {
+      setError(error, "Failed to send message. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -80,7 +136,6 @@ const ContactPage = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
             <div className="bg-white rounded-lg p-6 md:p-8 shadow-lg">
               <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -152,10 +207,11 @@ const ContactPage = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
+                  disabled={loading}
+                  className="w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="w-5 h-5" />
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </button>
               </form>
               {submitted && (
@@ -163,8 +219,12 @@ const ContactPage = () => {
                   Thank you for your message! We&rsquo;ll get back to you soon.
                 </div>
               )}
+              {error && (
+                <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
+                  {error}
+                </div>
+              )}
             </div>
-
             {/* Additional Information */}
             <div className="space-y-8">
               <div>
@@ -178,16 +238,6 @@ const ContactPage = () => {
                   <BusinessHours day="Sunday" hours="Closed" />
                 </div>
               </div>
-
-              <div>
-                <h2 className="text-2xl font-bold mb-6">Our Location</h2>
-                <div className="bg-gray-100 rounded-lg overflow-hidden h-96">
-                  {/* Replace this div with your map component */}
-                  <div className="w-full h-full bg-gray-300 flex items-center justify-center">
-                    <MapPin className="w-12 h-12 text-gray-400" />
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -196,10 +246,6 @@ const ContactPage = () => {
     </div>
   );
 };
-
-import PropTypes from "prop-types";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 
 const ContactCard = ({ icon, title, details }) => (
   <div className="bg-white rounded-lg p-6 shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
