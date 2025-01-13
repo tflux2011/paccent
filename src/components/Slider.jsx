@@ -34,6 +34,11 @@ const Slider = () => {
       title: "Sustainable Mining",
       description: "Committed to environmental responsibility",
     },
+    {
+      image: "slider10.jpeg",
+      title: "Unlock the Power of Innovation in Mining",
+      description: "Transforming Natural Resources into Sustainable Solutions",
+    },
   ];
 
   React.useEffect(() => {

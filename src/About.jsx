@@ -2,6 +2,7 @@ import { Shield, Target, Users, ChevronRight } from "lucide-react";
 import PropTypes from "prop-types";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import LeadershipSection from "./components/LeadershipSection";
 
 const About = () => {
   return (
@@ -155,30 +156,7 @@ const About = () => {
         </section>
 
         {/* Leadership Team */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              Our Leadership
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <TeamMemberCard
-                name="Samuel Johnson"
-                position="Chief Executive Officer"
-                imageSrc="/api/placeholder/400/400"
-              />
-              <TeamMemberCard
-                name="Sarah Ahmed"
-                position="Chief Operations Officer"
-                imageSrc="/api/placeholder/400/400"
-              />
-              <TeamMemberCard
-                name="Michael Okonkwo"
-                position="Head of Exploration"
-                imageSrc="/api/placeholder/400/400"
-              />
-            </div>
-          </div>
-        </section>
+        <LeadershipSection />
 
         {/* Achievements */}
         <section className="py-20 bg-amber-50">
