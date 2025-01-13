@@ -114,10 +114,7 @@ const ContactPage = () => {
             <ContactCard
               icon={<Mail className="w-6 h-6" />}
               title="Email Addresses"
-              details={[
-                "info@pacecenturyminers.com",
-                "pacecentminers@gmail.com",
-              ]}
+              details={["info@pacecentminers.com", "pacecentminers@gmail.com"]}
             />
             <ContactCard
               icon={<MapPin className="w-6 h-6" />}
