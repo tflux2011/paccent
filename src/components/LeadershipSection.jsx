@@ -55,11 +55,6 @@ const LeadershipSection = () => {
       position: "Director",
       imageSrc: "Bishop.jpeg",
     },
-    {
-      name: "Adesinaoye Oluwasegun Olumide",
-      position: "Geological Technologist/Geological Engineer",
-      imageSrc: "olumide.jpeg",
-    },
   ];
 
   return (

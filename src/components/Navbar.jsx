@@ -13,6 +13,7 @@ const Navbar = () => {
   const navLinks = [
     { path: "/", label: "Home" },
     { path: "/about", label: "About Us" },
+    { path: "/pgtech", label: "PG Tech" },
     { path: "/gallery", label: "Gallery" },
     { path: "/contact-us", label: "Contact Us" },
   ];

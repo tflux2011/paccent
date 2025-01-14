@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Droplet, Building, Map, Users, Mail, MapPin } from "lucide-react";
+import { Droplet, Building, Map, Mail, MapPin } from "lucide-react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -178,37 +178,64 @@ const ManagementSection = () => {
       name: "Engr Oluwatoyin M.O ORIOLA",
       title: "MD/CEO",
       credentials: "FCIM, MCPN",
+      imageSrc: "toyin.jpg",
     },
     {
       name: "Engr Samson Olurotimi Oderinde",
       title: "Director (Operation & Logistic)",
+      imageSrc: "avatar-1.svg",
     },
     {
       name: "Engr Akinola Michael Olatunji",
       title: "Snr Project Engineer (Civil)",
       credentials: "COREN",
+      imageSrc: "avatar-1.svg",
     },
-    { name: "Engr Akeem ORIOLA", title: "Snr Project Engineer (Water)" },
-    { name: "Barrister Oluchi Umeri", title: "Company Secretary" },
+    {
+      name: "Engr Akeem ORIOLA",
+      title: "Snr Project Engineer (Water)",
+      imageSrc: "avatar-1.svg",
+    },
+    {
+      name: "Barrister Oluchi Umeri",
+      title: "Company Secretary",
+      imageSrc: "avatar-1.svg",
+    },
     {
       name: "Ademola Aderoju",
       title: "Water/Mining Consultant",
       credentials: "Ph.D. OAU,Ile-Ife - in view",
+      imageSrc: "avatar-1.svg",
     },
     {
       name: "Babanisi Jimi",
       title: "Head of Finance/Account",
       credentials: "ICAN",
+      imageSrc: "avatar-1.svg",
     },
     {
       name: "Boladale ORIOLA",
       title: "Head of Logistics",
       credentials: "M.Sc. UNILAG",
+      imageSrc: "avatar-1.svg",
     },
     {
       name: "Gyang Fom Samuel",
       title: "Project Analyst",
       credentials: "M.Sc.,UniJos",
+      imageSrc: "avatar-1.svg",
+    },
+    {
+      name: "Gyang Fom Samuel",
+      title: "Project Analyst",
+      credentials: "M.Sc.,UniJos",
+      imageSrc: "avatar-1.svg",
+    },
+    {
+      name: "Adesinaoye Oluwasegun Olumide",
+      title: "Geological Technologist/Geological Engineer",
+      credentials: "B.Sc. & M.Sc. in Applied Geophysics",
+      imageSrc: "olumide.jpeg",
     },
   ];
 
@@ -221,11 +248,15 @@ const ManagementSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {team.map((member, index) => (
             <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-              <Users className="w-8 h-8 text-amber-700 mb-4" />
-              <h3 className="text-lg font-bold">{member.name}</h3>
-              <p className="text-gray-600">{member.title}</p>
+              <img
+                src={member.imageSrc}
+                alt={name}
+                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+              />
+              <h3 className="text-lg font-bold text-center">{member.name}</h3>
+              <p className="text-gray-600 text-center">{member.title}</p>
               {member.credentials && (
-                <p className="text-gray-500 text-sm mt-1">
+                <p className="text-gray-500 text-sm mt-1 text-center">
                   {member.credentials}
                 </p>
               )}
