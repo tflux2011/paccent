@@ -181,6 +181,11 @@ const ManagementSection = () => {
       imageSrc: "toyin.jpg",
     },
     {
+      name: "Engr Adewale Oluwakemi MEBUDE",
+      title: "General Manager",
+      imageSrc: "gm.jpeg",
+    },
+    {
       name: "Engr Samson Olurotimi Oderinde",
       title: "Director (Operation & Logistic)",
       imageSrc: "avatar-1.svg",
