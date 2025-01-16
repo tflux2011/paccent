@@ -225,12 +225,7 @@ const ManagementSection = () => {
       credentials: "M.Sc.,UniJos",
       imageSrc: "avatar-1.svg",
     },
-    {
-      name: "Gyang Fom Samuel",
-      title: "Project Analyst",
-      credentials: "M.Sc.,UniJos",
-      imageSrc: "avatar-1.svg",
-    },
+
     {
       name: "Adesinaoye Oluwasegun Olumide",
       title: "Geological Technologist/Geological Engineer",
